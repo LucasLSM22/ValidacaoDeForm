@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validação de dados</title>
+    <script>
+        function validarDados() {
+            var nome = document.getElementById("nome").value;
+            var endereco = document.getElementById("endereco").value;
+            var bairro = document.getElementById("bairro").value;
+            var cep = document.getElementById("cep").value;
+
+            if (nome == "") {
+                console.log("O campo nome está vazio!");
+            } else {
+                var tamanhoNome = nome.length;
+                if (tamanhoNome > 50) {
+                    console.log("O campo nome está muito longo!");
+                }
+            }
+
+            if (endereco == "") {
+                console.log("O campo endereço está vazio!");
+            } else {
+                var tamanhoEndereco = endereco.length;
+                if (tamanhoEndereco > 80) {
+                    console.log("O campo endereço está muito longo!");
+                }
+            }
+
+            if (bairro == "") {
+                console.log("O campo bairro está vazio!");
+            } else {
+                var tamanhoBairro = bairro.length;
+                if (tamanhoBairro > 60) {
+                    console.log("O campo bairro está muito longo!");
+                }
+            }
+
+            var regexCEP = /^\d{5}-\d{3}$/; // Expressão regular para o formato XXXXX-XXX
+
+            if (cep == "") {
+                console.log("O campo CEP está vazio!");
+            } else {
+                if (!regexCEP.test(cep)) {
+                    console.log("CEP inválido. Digite no formato XXXXX-XXX.");
+                }
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+    <form>
+        Nome: <input type="text" name="nome" id="nome"><br><br>
+        Endereço: <input type="text" name="endereco" id="endereco"><br><br>
+        Bairro: <input type="text" name="bairro" id="bairro"><br><br>
+        CEP: <input type="text" name="cep" id="cep"><br><br>
+        <button type="button" name="cadastrar" id="cadastrar" onclick="validarDados()">Cadastrar</button>
+    </form>
+</body>
+
+</html>
